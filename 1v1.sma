@@ -33,7 +33,7 @@ public plugin_precache()
 
 public ready(id)
 {   
-	if(gameON == 0){
+	if(gameON == 0 && get_cvar_num("currentRound") == 0){
 	    new buffer[256];
 	    new buffer1[33];
 	    new buffer2[33];
@@ -45,12 +45,12 @@ public ready(id)
 	    {
 		
 	       //code for ready up
-	       if(numPlayerReady == 0){
+	       if(numPlayerReady == 0 && playerReady[id] == 0){
 		playerReady[id] = 1;
 		client_print(0, print_chat, "%s is ready", name);
 		numPlayerReady++;
 		}
-		else if(numPlayerReady == 1){
+		else if(numPlayerReady == 1 && playerReady[id] == 0){
 		client_print(0, print_chat, "%s is ready", name);
 		client_print(0, print_chat, "***PREPARE TO FIGHT****");
 		playerReady[id] = 2;
